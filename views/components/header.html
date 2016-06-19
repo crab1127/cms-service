@@ -1,0 +1,44 @@
+<div class="top-con">
+  <div class="container clearfix">
+    <p class="sayHello">您好，欢迎来到 <a href="<%= domainPath %>">GDP8</a>！</p>
+    <ul class="JS-in">
+    </ul>
+
+    <ul class="t-quick-menu" value="21">
+    </ul>
+
+  </div>
+</div>
+
+<div class="header">
+  <div class="container clearfix" id="headercontainerid">
+    <div class="logo">
+      <a href="/">
+        <% if (!logo) {%>
+          <img src="<%= config.site_logo %>" />
+        <% } else { %>
+          <img src="<%= config.site_logo_icon %>" />
+        <% } %>
+      </a>
+      <% if (logo) {%>
+        <a href="javascript:;">
+          <img src="<%- resize(logo, 160, 65) %>" />
+        </a>
+      <% }%>
+    </div>
+    <form class="search_con j-search" action="/productSearch/list.cf">
+      <input type="hidden" class="j-search-type-input searchType" value="Products"/>
+      <div class="search-type">
+        <a href="javascript:;" class="active j-search-type" data-type="Products">产品</a>
+        <a href="javascript:;" class="j-search-type" data-type="Suppliers">供应商</a>
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control search-keyword j-search-keyword" id="appendedDropdownButton" placeholder="请输入关键字" value="">
+        <span class="input-group-btn">
+          <button class="btn btn-gm" type="submit">搜 索</button>
+        </span>
+      </div>
+    </form>	
+  </div>
+</div>
+

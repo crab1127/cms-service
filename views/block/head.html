@@ -1,0 +1,20 @@
+<meta type="keywords" content="<%= config.keywords %>">
+<meta type="description" content="<%= config.description %>">
+<%
+  var headers = config.site_headers || [];
+  for (var i = 0, l = headers.length; i < l; i++) {
+  %>
+  <%- headers[i] %>
+  <% } %>
+
+<link href="<%= assetsPath %>/common/bootstrap/dist/css/bootstrap.css" rel="stylesheet" >
+<link rel="stylesheet" href="<%= assetsPath %>/common/common.css">
+<link href="<%= assetsPath %>/global/css/common.css" rel="stylesheet" >
+
+
+<script type="text/javascript">
+var assetsUrl = '<%= assetsPath %>';
+var domain = commonApi = '';
+var imageInterfaceUrl = '';
+var regEnCode = /^\w\W+$/i;
+</script>

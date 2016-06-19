@@ -1,0 +1,152 @@
+<!--专业镇 内容页-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title><%= base.name %> - <%= config.title %></title>
+
+  <% include ./block/head.html %>
+  <link href="<%= assetsPath %>/IndustrialCluster/css/home.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/index.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/p/home.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/professionaltown.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/p/brandType.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/zhuanyezhen.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/zzsc.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/onlineshop.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/Professionalmarket/css/onlineshopping.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<% include ./components/header.html %>
+<% include ./block/market-nav.html %>
+
+<div class="gm-container">
+  <!--导航-->
+  <div class="gm-area-a clearfix">
+      <div class="lemenu">
+        <% if (menus && menus.length) { %>
+        <% menus.forEach(function(menu, i){ %>
+          <div class="ti"><%= menu.name %></div>
+          <div class="ty">
+            <% if (menu.children && menu.children.length) {%>
+            <% menu.children.forEach(function(item) { %>
+            <a href="<%= item.link %>"><span><%= item.name %></span></a>
+            <% }) %>
+            <% } %>
+          </div>
+          <% if (i != (menus.length-1)) { %>
+          <div class="ln"></div>
+          <% } %>
+        <% }) %>
+        <% } %>
+      </div>
+
+      <div class="banner-nav">
+        <div class="ig">
+          <img src="http://dev.gdp.com/static/Professionalmarket/images/1/onlinebanner1.jpg">
+        </div>
+        <div class="rt">
+          <div class="ima">
+            <img src="http://dev.gdp.com/static/Professionalmarket/images/1/l1.jpg">
+          </div>
+          <div class="list-box">
+            <div class="list-box-scro" id="ri-list-box-scro-id" style="width: 440px;">
+              <ul class="gm-menu-m">
+                <li><a href="javascript:;">1st Floor</a></li>
+                <li><a href="javascript:;">2nd Floor</a></li>
+                <li><a href="javascript:;">3rd Floor</a></li>
+                <li><a href="javascript:;">4th Floor</a></li>
+                <li><a href="javascript:;">5th Floor</a></li>
+                <li><a href="javascript:;">6th Floor</a></li>
+              </ul>
+              <ul class="gm-menu-m">
+                <li><a href="javascript:;">1st Floor</a></li>
+                <li><a href="javascript:;">2nd Floor</a></li>
+                <li><a href="javascript:;">3rd Floor</a></li>
+                <li><a href="javascript:;">4th Floor</a></li>
+                <li><a href="javascript:;">5th Floor</a></li>
+                <li><a href="javascript:;">6th Floor</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="list-box-botton">
+            <a href="javascript:;" class="leno" id="ri-leid"> </a><a href="javascript:;" class="ri" id="ri-riid"> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-business-bar">
+      <div class="ti">热门供应商</div>
+      <div class="lt">
+        <a href="javascript:;" class="ut">
+          <div class="ig"><img src="http://dev.gdp.com/static/Professionalmarket/images/1/t-p-l1.jpg"></div>
+          <div class="na">
+            <div class="ofs">2F 218A</div>
+            <div class="nate">斐戈尔皮具加工店</div>
+          </div>
+        </a>
+        <a href="javascript:;" class="ut">
+          <div class="ig"><img src="http://dev.gdp.com/static/Professionalmarket/images/1/t-p-l2.jpg"></div>
+          <div class="na">
+            <div class="ofs">2F 254A</div>
+            <div class="nate">鸿丰皮具有限公司</div>
+          </div>
+        </a>
+        <a href="javascript:;" class="ut">
+          <div class="ig"><img src="http://dev.gdp.com/static/Professionalmarket/images/1/t-p-l3.jpg"></div>
+          <div class="na">
+            <div class="ofs">5F 511B</div>
+            <div class="nate">广州巧匠坊皮具有限公司</div>
+          </div>
+        </a>
+        <a href="javascript:;" class="ut">
+          <div class="ig"><img src="http://dev.gdp.com/static/Professionalmarket/images/1/t-p-l4.jpg"></div>
+          <div class="na">
+            <div class="ofs">3F 338A</div>
+            <div class="nate">泽楷皮具有限公司</div>
+          </div>
+        </a>
+        <a href="javascript:;" class="ut">
+          <div class="ig"><img src="http://dev.gdp.com/static/Professionalmarket/images/1/t-p-l5.jpg"></div>
+          <div class="na">
+            <div class="ofs">1F 105A</div>
+            <div class="nate">鸿盛亿手袋</div>
+          </div>
+        </a>
+        <a href="javascript:;" class="ut">
+          <div class="ig"><img src="http://dev.gdp.com/static/Professionalmarket/images/1/t-p-l6.jpg"></div>
+          <div class="na">
+            <div class="ofs">2F 231A</div>
+            <div class="nate">度家蒙</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="floor-boxon">
+      <img src="http://dev.gdp.com/static/Professionalmarket/images/1/onfloor-p1.jpg">
+    </div>
+
+    <div class="floor-boxon">
+      <img src="http://dev.gdp.com/static/Professionalmarket/images/1/onfloor-p2.jpg">
+    </div>
+
+    <div class="floor-boxon">
+      <img src="http://dev.gdp.com/static/Professionalmarket/images/1/onfloor-p3.jpg">
+    </div>
+
+    <div class="floor-boxon">
+      <img src="http://dev.gdp.com/static/Professionalmarket/images/1/onfloor-p4.jpg">
+    </div>
+
+</div>
+
+
+<% include ./components/footer.html %>
+<script type="text/javascript" src="<%= assetsPath %>/Professionalmarket/onlineshopping.js"></script>
+
+</body>
+</html>

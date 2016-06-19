@@ -1,0 +1,204 @@
+<!--专业镇 内容页-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title><%= base.name %> - <%= config.title %></title>
+
+  <% include ./block/head.html %>
+
+  <link href="<%= assetsPath %>/IndustrialCluster/css/home.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/index.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/p/home.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/professionaltown.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/p/brandType.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/zhuanyezhen.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/zzsc.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<% include ./components/header.html %>
+<% include ./block/industrial-nav.html %>
+
+<div class="cont-box">
+<div id="con">
+  <div class="ban">
+      <div class="le">
+        <div class="me">
+          <% if (menus && menus.length) {%>
+          <% menus.forEach(function(menu) { %>
+          <div class="un">
+            <span class="ti"><%- menu.name.substr(0,10) %></span>
+            <% if (menu.children && menu.children.length) {%>
+            <% menu.children.forEach(function(item) { %>
+            <a href="<%= item.link %>"><span class="bl"><%- item.name.substr(0,10) %></span></a>
+            <% }) %>
+            <% } %>
+          </div>
+          <% }) %>
+          <% } %>
+        </div>
+      </div>
+      <div class="md" id="professionalmarketbannerid">
+        <div class="ig">
+          <div class="bd">
+            <ul class="picList">
+              <% if (slide) { %>
+              <% slide.forEach(function(item) { %>
+              <li>
+                 <a href="<%= item.link %>">
+                  <img src="<%- resize(item.img, 700, 450, 2) %>" width="700" height="450"/>
+                 </a>
+              </li>
+              <% }) %>
+              <% } %>
+            </ul>
+          </div>
+          <div class="hd">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+      <div class="ri">
+        <% if (recommend && recommend.length) {%>
+        <% recommend.forEach(function(item,i) { %>
+        <a href="<%= item.link %>" class="pro-<%= (i + 1) %>" style="background-image: url(<%- resize(item.img, 175, 160) %>); ">
+          <span class="te1"><%- item.name.substr(0,10) %></span>
+          <span class="te2"><%- item.desc.substr(0,10) %></span>
+          <span class="te3">
+    				<% if(item.price != undefined ){ %>
+    				￥ <%= item.price.substr(0,10) %>
+    				<% } %>
+    		  </span>
+        </a>
+        <% }) %>
+        <% } %>
+        <a href="javascript:;" class="pro-3"><span> </span></a>
+
+      </div>
+  </div>
+  <div id="container">
+    <div class="category">
+          <span class="le"> </span><span class="te"><%= base.name %>-品牌100强</span><span class="ri"></span>
+      </div>
+    </div>
+    <div class="box">
+      <ul class="cc">
+        <% if (shops && shops.length) {%>
+        <% shops.forEach(function(item,i) { %>
+        <li class="box-item1  <% if ((i+1)%5 == 0) {%> ed<% } %> ">
+          <a
+            <% if(item.id) { %>href="/supplierShop/index.cf?companyId=<%= item.id %>" <% } %>
+            <% if(item.id) { %>href="javascript:;" <% } %>
+            >
+            <div class="pro-img">
+              <img src="<%- resize(item.img, 230, 440) %>" width="230" height="440" art="<%= item.name %>">
+            </div>
+          </a>
+        </li>
+        <% }) %>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-bottom: 20px">
+  <div class="photo " id="photo">
+    <% if (logos && logos.length) {%>
+    <% logos.forEach(function(logo,i) { %>
+    <div class="item block0<%= i+1 %>" id="item<%= i %>" onmousemove="init(<%= i %>,7)"  style="<% if(i==0) { %> width: 385px; <% } %>">
+        <h3 id="h30">
+          <%- logo.name.substr(0,10) %>
+        </h3>
+        <% if (logo.items && logo.items.length) {%>
+        <% logo.items.forEach(function(item, x) { %>
+          <% if (x == 0) { %>
+          <ul id="ur10" style="width:75px; float:left; margin-right:35px; margin-left:18px;">
+          <% } %>
+          <% if (x == 4) { %>
+          <ul id="ur20" style="width:75px; float:left;margin-right:35px">
+          <% } %>
+          <% if (x == 8) { %>
+          <ul id="ur30" style="width:75px; float:left;">
+          <% } %>
+            <li style="height:80px;">
+                <a
+                  <% if(item.id) { %>href="/supplierShop/index.cf?companyId=<%= item.id %>" <% } %>
+                  <% if(item.id) { %>href="javascript:;" <% } %>
+                >
+                    <img width="90" height="32px" alt="" class="logo" src="<%- resize(item.logo, 90, 32) %>"
+                    style="margin-top:20px;">
+                </a>
+            </li>
+
+          <% if ((x+1) % 4  == 0) { %>
+          </ul>
+          <% } %>
+        <% }) %>
+        <% if (logo.items.length % 4  != 0) { %>
+        </ul>
+        <% } %>
+    <% } %>
+    </div>
+    <% }) %>
+    <% } %>
+</div>
+</div>
+</div>
+
+<% include ./components/footer.html %>
+
+<script type="text/javascript">
+require(['superslide'], function(){
+  jQuery("#professionalmarketbannerid .ig").slide({
+    titCell : ".hd ul",
+    mainCell : ".bd ul",
+    autoPage : true,
+    effect : "left",
+    autoPlay : true,
+    scroll : 1,
+    vis : 1,
+  });
+});
+</script>
+
+<script type="text/javascript">
+var brandlogo=7;
+function init(i,l){
+  var A=document.getElementById("item"+i+"");
+  A.onmouseover=uevent;
+  A.onmouseout=uevent;
+  function uevent(e){
+    var e=e||window.event;
+    if(e.type=="mouseover"){
+      if(null!=brandlogo&&brandlogo > 0){
+        for ( var j = 0; j < brandlogo; j++) {
+          if("item"+j=="item"+i){
+            $("#item"+j+"").width("385px");
+              if(j==0){
+                $("#h3"+j+"").css("color","#871247");
+              }else if(j==1){
+                $("#h3"+j+"").css("color","#515E93")
+              }else if(j==2){
+                $("#h3"+j+"").css("color","#795287")
+              }else if(j==3){
+                $("#h3"+j+"").css("color","#B2A274")
+              }else if(j==4){
+                $("#h3"+j+"").css("color","#8B8A3B")
+              }else if(j==5){
+                $("#h3"+j+"").css("color","#49928E")
+              }else if(j==6){
+                $("#h3"+j+"").css("color","#EEA283")
+              }
+          }else{
+            $("#item"+j+"").width("135px")
+            $("#h3"+j+"").css("color","");
+          }
+        }
+      }
+      }
+    };
+  }
+</script>
+
+</body>
+</html>

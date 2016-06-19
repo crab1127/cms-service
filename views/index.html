@@ -1,0 +1,152 @@
+<!--首页-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> <%= config.title %></title>
+
+  <% include ./block/head.html %>
+
+  <link rel="stylesheet" href="<%= assetsPath %>/index/index.css">
+
+</head>
+<body>
+
+  <% include ./components/header.html %>
+  <% include ./components/main-nav.html %>
+
+  <div class="container">
+    <div class="first-screen">
+      <div class="main-slide" id="main-slide">
+        <div class="hd">
+          <ul>
+            <% ads.forEach(function(item, i){ %>
+            <li></li>
+            <% }) %>
+          </ul>
+        </div>
+        <div class="bd">
+          <ul>
+            <% ads.forEach(function(item, i){ %>
+            <li>
+              <a href="<%= item.link %>" target="_blank">
+                <img data-src="<%= assetsPath %>/global/images/placeholder.png" src="<%- resize(item.img, 960, 410, 2) %>">
+              </a>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+
+        <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+        <a class="prev" href="javascript:void(0)"></a>
+        <a class="next" href="javascript:void(0)"></a>
+      </div>
+      <div class="safeguard clearfix">
+        <dl class="safeguard-1">
+          <dt>广货基地</dt>
+          <dd>专业镇</dd>
+          <dd>专业市场</dd>
+          <dd>产业园区</dd>
+        </dl>
+        <dl class="safeguard-2">
+          <dt>一手货源</dt>
+          <dd>品牌经营</dd>
+          <dd>实体店直批</dd>
+          <dd>厂家直批</dd>
+        </dl>
+        <dl class="safeguard-3">
+          <dt>诚信体系</dt>
+          <dd>全球优质供应商认证</dd>
+          <dd>可追溯货源</dd>
+          <dd>支付宝第三方担保</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="industry j-floor-container">
+      <% industrys.forEach(function(floor, i){ %>
+      <div class="industry-item floor-<%=i+1%>">
+        <div class="industry-item-h industry-item-h clearfix">
+          <h2><%=i+1%>F <%= floor.name%></h2>
+          <div class="link">
+            <% if (floor.link && floor.link.length) {%>
+            <% floor.link.forEach(function(item){ %>
+            <a href="<%= item.link %>"><%- item.title.substr(0,20) %></a>
+            <% }) %>
+            <% } %>
+          </div>
+        </div>
+        <div class="industry-item-b clearfix">
+          <div class="banner">
+          <% if (floor.banner) {%>
+          <a href="<%= floor.banner.link %>">
+            <img class="lazy" width="210" height="410"
+              data-src="<%- resize(floor.banner.img, 210, 410, 2) %>"
+              alt="<%= floor.banner.title %>"
+              src="<%= assetsPath %>/global/images/placeholder.png">
+            <img src="<%= assetsPath %>/global/images/highlisght.png" class="an-highlisght">
+          </a>
+          <% } %>
+          </div>
+          <div class="floor-content" style="height: 410px">
+            <% if (floor.big) { %>
+            <% floor.big.forEach(function(item){ %>
+            <div class="col-md-4">
+              <a href="<%= item.link %>" class="big tra">
+                <img class="lazy" width="242" height="273"
+                  data-src="<%- resize(item.img, 242, 273, 2) %>"
+                  alt="<%= item.title %>"
+                  src="<%= assetsPath %>/global/images/placeholder.png">
+              </a>
+            </div>
+            <% }) %>
+            <% } %>
+            <% if (floor.sm) { %>
+            <% floor.sm.forEach(function(item) { %>
+            <div class="col-md-4">
+              <a href="<%= item.link %>" class="sm tra">
+                <img class="lazy" width="242" height="134"
+                  data-src="<%- resize(item.img, 242, 134, 2) %>"
+                  alt="<%= item.title %>"
+                  src="<%= assetsPath %>/global/images/placeholder.png">
+              </a>
+            </div>
+            <% }) %>
+            <% } %>
+          </div>
+          <div class="floor-side">
+             <% if (floor.logo && floor.logo.length) { %>
+            <div class="floor-brand row">
+
+              <% floor.logo.forEach(function(item){ %>
+              <a href="<%= item.link %>" class="col-md-6">
+                <img class="lazy" width="117" height="55"
+                  data-src="<%- resize(item.img, 117, 55) %>"
+                  alt="<%= item.title %>"
+                  src="<%= assetsPath %>/global/images/placeholder.png">
+              </a>
+              <% }) %>
+
+            </div>
+            <% } %>
+            <% if (floor.logoimg) { %>
+            <a href="<%= floor.logoimg.link %>" class="floor-brand-product tra">
+              <img class="lazy" width="260" height="209"
+                data-src="<%- resize(floor.logoimg.img, 260, 209, 2) %>"
+                alt="<%= floor.logoimg.title %>"
+                src="<%= assetsPath %>/global/images/placeholder.png">
+            </a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+  </div>
+  <% include ./components/footer.html %>
+  <script src="<%= assetsPath %>/index/index.js"></script>
+</body>
+</html>

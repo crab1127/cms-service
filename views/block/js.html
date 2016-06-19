@@ -1,0 +1,46 @@
+<script type="text/javascript" src="<%= assetsPath %>/global/js/base.js"></script>
+<script type="text/javascript" src="<%= assetsPath %>/global/js/index.js"></script>
+<script type="text/javascript" src="<%= assetsPath %>/global/js/top.js"></script>
+<script type="text/javascript">
+  require(['layer'], function(layer){
+
+    $('.j-search')
+    .on('click', '.j-search-type', function(event) {
+      $(this).addClass('active').siblings('.j-search-type').removeClass('active');
+      $('.j-search-type-input').val($(this).data('type'));
+    })
+    .on('submit', function(event) {
+      search();
+      return false;
+    })
+    .on('keydown', '.j-search-keyword', function(event) {
+      if (13 === event.keyCode) {
+        $('.j-search').trigger('submit');
+      }
+    });
+
+    var searchType = "";
+    if(searchType === 'Suppliers' ){
+      $('.j-search-type-input').val('Suppliers');
+      $('.j-search-type').removeClass('active').eq(1).addClass('active');
+    }
+
+    function search(){
+      var searchType = $(".j-search-type-input").val();
+      var keyword = $(".j-search-keyword").val();
+      if(keyword == null || keyword == ""){
+        layer.alert("请输入检索词。");
+        $(".j-search-keyword").focus();
+        return false;
+      }
+
+      if(searchType == "Products"){
+        location.href = "/productSearch/list.cf?keyword="+keyword;
+      }
+
+      if(searchType == "Suppliers"){
+        location.href = "/supplierSearch/list.cf?keyword="+keyword;
+      }
+    }
+  });
+</script>

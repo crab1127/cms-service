@@ -1,0 +1,36 @@
+<div class="top-navi">
+  <div class="bx">
+    <ul>
+      <li>
+        <a href="/market/<%= base._id%>"
+          <% if ( '/market/' + base._id == path) {%>class="cu"<% } %>
+        >首  页</a>
+      </li>
+      <li>
+        <a href="javascript:;"
+          <% if (/onlineShop/.test(path)) {%> class="cu" <% } %>
+        >线上导购</a>
+      </li>
+      <li>
+        <a href="/market/<%= base._id%>/electricBusinessPark"
+          <% if (/electricBusinessPark/.test(path)) {%> class="cu" <% } %>
+        >电商产业园</a>
+      </li>
+      <li>
+        <a href="/market/<%= base._id%>/logistics"
+          <% if (/logistics/.test(path)) {%> class="cu" <% } %>
+        >物流园</a>
+      </li>
+      <li>
+        <a href="javascript:;"
+          <% if (/exhibitionTradeCenter/.test(path)) {%> class="cu" <% } %>
+        >展贸活动</a>
+      </li>
+      <li>
+        <a href="/market/<%= base._id%>/introduce"
+          <% if (/introduce/.test(path)) {%> class="cu" <% } %>
+        >市场介绍</a>
+      </li>
+    </ul>
+  </div>
+</div>

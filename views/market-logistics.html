@@ -1,0 +1,39 @@
+<!--专业镇 内容页-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title><%= base.name %> - <%= config.title %></title>
+
+  <% include ./block/head.html %>
+
+  <link href="<%= assetsPath %>/IndustrialCluster/css/home.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/index.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/p/home.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/professionaltown.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/p/brandType.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/zhuanyezhen.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/zzsc.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/logisticscenter.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<% include ./components/header.html %>
+<% include ./block/market-nav.html %>
+
+<div class="logisticscenter-b"></div>
+<div class="domesticlogistics-b">
+  <div class="ti">国内物流</div>
+  <div class="gr"><img src="http://sit.gdp.com/static/IndustrialCluster/images/domesticlogistics1.png"></div>
+  <div></div>
+</div>
+<div class="internationallogistics-b">
+  <div class="ti">国际物流</div>
+  <div class="gr"><img src="http://sit.gdp.com/static/IndustrialCluster/images/internationallogistics1.png"></div>
+</div>
+
+<% include ./components/footer.html %>
+
+</body>
+</html>

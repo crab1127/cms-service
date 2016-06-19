@@ -1,0 +1,97 @@
+<!--专业镇-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>专业镇 - <%= config.title %></title>
+
+
+  <% include ./block/head.html %>
+
+  <link href="<%= assetsPath %>/IndustrialCluster/css/index.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/brand/index.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/brand/brandType.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/jquery.tmailsider.css" rel="stylesheet" type="text/css" media="screen,projection" charset="utf-8">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/home.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    /*幻灯片*/
+    .main-slide{ width:1200px; height:410px; overflow:hidden; position:relative; border:1px solid #ddd;  }
+    .main-slide .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
+    .main-slide .hd ul{ overflow:hidden; zoom:1; float:left;  }
+    .main-slide .hd ul li{ float:left; margin-right:5px;  width:15px; height:15px; border-radius:20px;line-height:14px; text-align:center; background:#fff; cursor:pointer; opacity: .5; filter:alpha(opacity=50)}
+    .main-slide .hd ul li.on{ background:#fff; color:#fff;opacity: 1; filter:alpha(opacity=100) }
+    .main-slide .bd{ position:relative; height:100%; z-index:0;   }
+    .main-slide .bd li{ zoom:1; vertical-align:middle; }
+    .main-slide .bd img{ width:1200px; height:410px; display:block;  }
+
+    /* 下面是前/后按钮代码，如果不需要删除即可 */
+    .main-slide .prev,
+    .main-slide .next{ position:absolute; left:3%; top:50%; margin-top:-25px; display:block; width:32px; height:40px; background:url(../global/images/slider-arrow.png) -110px 5px no-repeat; filter:alpha(opacity=50);opacity:0.5;   }
+    .main-slide .next{ left:auto; right:3%; background-position:8px 5px; }
+    .main-slide .prev:hover,
+    .main-slide .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+    .main-slide .prevStop{ display:none;  }
+    .main-slide .nextStop{ display:none;  }
+  </style>
+</head>
+<body>
+
+
+<% include ./components/header.html %>
+<% include ./components/main-nav.html %>
+
+<div class="container">
+  <div class="main-slide" id="main-slide">
+    <% if(silde && silde.length) { %>
+    <div class="hd">
+      <ul>
+        <% silde.forEach(function(item, i){ %>
+        <li></li>
+        <% }) %>
+      </ul>
+    </div>
+    <div class="bd">
+      <ul>
+        <% silde.forEach(function(item, i){ %>
+        <li>
+          <a href="<%= item.link %>" target="_blank">
+            <img src="<%- resize(item.img, 'origin') %>">
+          </a>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+    <a class="prev" href="javascript:void(0)"></a>
+    <a class="next" href="javascript:void(0)"></a>
+    <% } %>
+  </div>
+</div>
+<div style="padding-bottom:20px;" class="container">
+  <div class="box-top-title">
+      <div class="md">
+        <span class="lnle"> </span><span class="te">广货全球采购基地</span><span class="lnri"> </span>
+      </div>
+  </div>
+
+  <div class="row">
+    <% shops.forEach(function(item) { %>
+    <div class="col-md-3" style="margin-bottom: 25px;">
+      <a href="/industrial/<%= item._id %>">
+        <img src="<%- resize(item.img, 277, 550, 3) %>" alt="<%= item.name %>" width="100%" height="550">
+      </a>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<% include ./components/footer.html %>
+<script>
+  require(['superslide'], function(){
+    $("#main-slide").slide({mainCell:".bd ul",effect:"left",autoPlay:true});
+  });
+</script>
+</body>
+</html>

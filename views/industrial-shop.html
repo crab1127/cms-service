@@ -1,0 +1,453 @@
+<!--专业镇 内容页-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title><%= base.name %> - <%= config.title %></title>
+
+  <% include ./block/head.html %>
+
+
+  <link href="<%= assetsPath %>/IndustrialCluster/css/home.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/index.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/p/home.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/professionaltown.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/p/brandType.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/zhuanyezhen.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/zzsc.css" rel="stylesheet" type="text/css">
+  <link href="<%= assetsPath %>/IndustrialCluster/css/onlineshop.css" rel="stylesheet" type="text/css">
+  <style>
+  .pagination>li>a, .pagination>li>span {
+    margin-left: 10px;
+}
+    .not-match-box{
+      width:1200px;
+      /*float:right;*/
+      height:700px;
+      background:#FFF;
+      margin:0 auto 35px;
+    }
+
+
+    .not-match-box .tp{
+      width:930px;
+      /* float:right; */
+      margin-right:15px;
+      height:430px;
+      background:#fff url(/static/search/images/notmatchproduct.jpg) no-repeat;
+      border-bottom:1px dashed #dfdfdf;
+    }
+
+    .not-match-box .tp .inf{
+      float:right;
+      margin-top:250px;
+      width:470px;
+      height:200px;
+    }
+
+    .not-match-box .tp .rw{
+      width:470px;
+      height:33px;
+      line-height:33px;
+      color:#757575;
+    }
+
+    .not-match-box .tp .rw .te{
+      float:left;
+    }
+
+    .not-match-box .tp .rw a.bth{
+      background:#f58220;
+      display:block;
+      height:20px;
+      line-height:20px;
+      color:#fff;
+      text-align:center;
+      border-radius:4px;
+      float:left;
+      margin-left:40px;
+      margin-top:5px;
+      padding-left:10px;
+      padding-right:10px;
+    }
+
+
+    .not-match-box .tp .rw a.bth:hover{
+      background:#D86304;
+      display:block;
+      height:20px;
+      line-height:20px;
+      color:#fff;
+      text-align:center;
+      border-radius:4px;
+      float:left;
+      margin-left:40px;
+      margin-top:5px;
+      padding-left:10px;
+      padding-right:10px;
+    }
+
+
+    .not-match-box .bm{
+      width:930px;
+      float:right;
+      margin-right:15px;
+      height:270px;
+    }
+
+    .not-match-box .bm .inf{
+      float:left;
+      margin-left:10px;
+      margin-top:48px;
+    }
+
+    .not-match-box .bm .inf .rw{
+      height:40px;
+      line-height:40px;
+      width:930px;
+      color:#757575;
+    }
+
+    .not-match-box .bm .inf .rw .t{
+      font-size:20px;
+      font-weight:bold;
+      color:#494949;
+    }
+
+    .not-match-box .bm .inf .rw a.po{
+      width:140px;
+      height:40px;
+      line-height:40px;
+      text-align:center;
+      background:#fafafa;
+      border:1px solid #e6e6e6;
+      float:left;
+      margin-top:15px;
+      display:block;
+    }
+
+
+
+
+    .not-match-box .bm .inf .rw a.po span.ico{
+      width:17px;
+      height:17px;
+      background:url(/static/search/images/icongroup1.png)  no-repeat;
+      float:left;
+      margin-left:10px;
+      margin-top:10px;
+      display:block;
+    }
+
+    .not-match-box .bm .inf .rw a.po span.te{
+      width:100px;
+      height:40px;
+      line-height:40px;
+      font-size:12px;
+      color:#f58220;
+      float:left;
+    }
+
+
+    .not-match-box .bm .inf .rw a.po:hover span.te{
+      width:100px;
+      height:40px;
+      line-height:40px;
+      font-size:12px;
+      color: #ffa65a;
+      float:left;
+    }
+    .online-shop-searh-option{
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<% include ./components/header.html %>
+<% include ./block/industrial-nav.html %>
+
+<div class="online-shop-searh-option">
+  <div class="search-bar">
+      <span class="ti">搜索产品:</span>
+      <div class="ipt">
+        <input type="text" placeholder="在当前状态下搜索" class="ky" value="<%= filter.keyword %>">
+        <a href="javascript:;" class="j-search-shop sh"><span class="ico"> </span></a>
+      </div>
+  </div>
+  <div class="search-query">
+    <ul>
+      <li class="query-price">
+        <div class="s-price fl" style="width: 22%; outline: rgb(223, 223, 223) solid 0px; background: none;">
+          <span class="te">价格：</span> <small>￥</small>
+          <input type="text" class="minPrice" value="<%= filter.minPrice %>">
+          <span class="ln">-</span> <small>￥</small>
+          <input type="text" class="maxPrice" value="<%= filter.maxPrice %>">
+          <a class="s-price-go fr mr10 dn">确定</a>
+        </div>
+        <div class="s-minorder fl ml5" style="width: 20%; outline: rgb(223, 223, 223) solid 0px; background: none;">
+          <span class="te">最小起订量：</span>
+          <input type="text" class="minOrder" value="<%= filter.minOrder %>">
+          <a class="s-minorder-go fr mr10 dn">确定</a>
+        </div>
+      </li>
+      <li class="query-type"><span class="te">供应商类型：</span>
+        <label> <input type="checkbox" class="prime-Member member" value="3" <% if (filter.vip.indexOf('3') != -1) { %>checked="checked" <% } %>>
+            <span class="memb5"></span><span>至尊会员</span>
+        </label>
+        <label> <input type="checkbox" class="gold-Member member" value="2" <% if (filter.vip.indexOf('2') != -1) { %>checked="checked" <% } %>>
+            <span class="memb4"></span><span>黄金会员</span>
+        </label>
+        <label> <input type="checkbox" class="vip-Member member" value="1" <% if (filter.vip.indexOf('1') != -1) { %>checked="checked" <% } %>>
+            <span class="memb3"></span><span>Vip会员</span>
+        </label>
+        <label> <input type="checkbox" class="experience-Member member" value="0" <% if (filter.vip.indexOf('0') != -1) { %>checked="checked" <% } %>>
+            <span class="memb1"></span><span>体验会员</span>
+        </label>
+      </li>
+      <li class="purc-type"><span>采购类型：</span> <label>
+      <input type="checkbox" class="s-product" value="1" <% if (filter.productType.indexOf('1') != -1) { %>checked="checked" <% } %>><span>批发</span>
+      </label> <label>
+      <input type="checkbox" class="s-sample" value="2" <% if (filter.productType.indexOf('2') != -1) { %>checked="checked" <% } %>><span>样品</span>
+      </label></li>
+    </ul>
+  </div>
+</div>
+
+<% if(products && products.length) { %>
+<div class="shop-list">
+  <% products.forEach(function(item, i){ %>
+  <div class="uni">
+    <div class="ig">
+      <div class="bx">
+        <img src="<%- resize(item.productImg, 222, 220 ) %>">
+      </div>
+    </div>
+    <div class="mdbg"></div>
+    <div class="mdif">
+      <div class="fv"><a href="javascript:;" class="fva"><span class="icfv"></span>收藏</a></div>
+      <div class="bn"><a href="javascript:;" class="bna"><span class="icbn"></span>加入购物车</a></div>
+    </div>
+    <div class="pf">
+      <div class="pr">￥
+        <% if(item.price == 0) { %>
+          <%= item.minPrice %> ~ <%= item.maxPrice %>
+        <% } else {%>
+          <%= item.price %>
+        <% }%>
+      </div>
+      <div class="na"><%= item.productName %></div>
+      <div class="cmna"><%= item.companyCnName %></div>
+      <div class="pc">起批量 <%= item.minOrder %> 个 <a href="javascript:;" class="ema"><span class="ic"></span></a></div>
+    </div>
+  </div>
+  <% }) %>
+
+</div>
+
+<div class="list-page">
+<%- paginate(pages.total, pages.pageSize, pages.page, {add_args: filter}) %>
+</div>
+<% } else { %>
+<div class="Bar">
+  <div class="not-match-box">
+    <div class="tp" style="margin: 0px auto;">
+      <div class="inf">
+        <div class="rw">您可以：</div>
+        <div class="rw"><span class="te">1.缩短或更改你的关键词，再次搜索.</span></div>
+        <div class="rw">
+          <span class="te">2.在首页浏览更多待售商品</span> <a href="/" class="bth">返回首页</a>
+        </div>
+      </div>
+    </div>
+    <div class="bm">
+      <div class="inf">
+        <div class="rw">
+          <span class="t">让供应商找到您</span>
+        </div>
+        <div class="rw">如果您对该产品有任何要求，请发送询盘给我们的供应商.</div>
+        <div class="rw">
+          <a href="/bcenter/buyingLead/addPage.cf" class="po"><span class="ico"></span><span class="te">发布采购需求</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<% include ./components/footer.html %>
+<script>
+  $(function(){
+
+      var regPrice = /^\d{0,9}(\.\d{1,2})?$/;
+      var regCode = /^[0-9]+$/i;
+
+      var data = "";
+
+      var page = "";
+      var pageSize = "";
+      var minPrice = '<%= filter.minPrice %>';
+      var maxPrice = '<%= filter.maxPrice %>';
+      var minOrder = '<%= filter.minOrder %>';
+      var productType = '<%= filter.productType %>';
+      var keyword = '<%= filter.keyword %>'
+
+      $(".member").click(function(){
+        var data = getSearch( minPrice, maxPrice, minOrder, productType, keyword);
+          window.location.href = data;
+      });
+
+        $(".s-product").click(function(){
+      if($(".s-product").prop("checked")){
+        productType=1;
+      }else{
+        productType=0
+      }
+      var data = getSearch( minPrice, maxPrice, minOrder, productType, keyword);
+          window.location.href = data;
+    });
+
+       $(".s-sample").click(function(){
+      if($(".s-sample").prop("checked")){
+        productType=2;
+      }else{
+        productType=0
+      }
+      var data = getSearch( minPrice, maxPrice, minOrder, productType, keyword);
+          window.location.href = data;
+    });
+
+
+    //价格
+    $(".s-price").bind('mouseover',function(){
+      $(".s-price").css({
+            "outline":"1px solid #DFDFDF",
+            "background": "#fff"
+          });
+      $(".s-price-go").removeClass('dn').addClass('db');
+    });
+    $(".s-price").bind('mouseleave',function(){
+      $(".s-price").css({
+            "outline":"0px solid #DFDFDF",
+            "background": 'none'
+          });
+      $(".s-price-go").addClass('dn').removeClass('db');
+    });
+
+        $(".s-price-go").click(function(){
+          var minP = $(".minPrice").val();
+          var maxP = $(".maxPrice").val();
+
+          if(minP != null && minP != '' && !regPrice.test(minP)){
+            alert("请输入正确的价格.");
+            return false;
+          }
+          if(maxP != null && maxP != '' && !regPrice.test(maxP)){
+            alert("请输入正确的价格.");
+            return false;
+          }
+          minPrice=minP;
+          maxPrice=maxP;
+
+          var data = getSearch( minPrice, maxPrice, minOrder, productType, keyword);
+          window.location.href= data;
+        });
+
+    //最小订单数
+    $(".s-minorder").bind('mouseover',function(){
+      $(".s-minorder").css({
+            "outline":"1px solid #DFDFDF",
+            "background":"#fff"
+          });
+      $(".s-minorder-go").removeClass('dn').addClass('db');
+
+    });
+    $(".s-minorder").bind('mouseleave',function(){
+      $(".s-minorder").css({
+            "outline":"0px solid #DFDFDF",
+            "background":"none"
+          });
+      $(".s-minorder-go").addClass('dn').removeClass('db');
+    });
+     $(".s-minorder-go").click(function(){
+
+          var mO = $(".minOrder").val()
+          if(mO == null || mO== ""){
+            alert("请输入最小订购量");
+            $(".minOrder").focus();
+            return false;
+          }
+          if(!regCode.test(mO)){
+            alert("请输入整数");
+            $(".minOrder").focus();
+            return false;
+          }
+          minOrder=mO;
+          var data = getSearch( minPrice, maxPrice, minOrder, productType, keyword);
+          window.location.href= data;
+        });
+       $('.j-search-shop').click(function(event) {
+        keyword = $('.ky').val();
+        var data = getSearch( minPrice, maxPrice, minOrder, productType, keyword);
+        window.location.href= data;
+      });
+    });
+
+
+
+    function getSearch( minPrice, maxPrice, minOrder, productType, keyword){
+      var data="";
+      var indusId = "";
+      var categoryId = "";
+      if(keyword != null && keyword != ""){
+        if(data.indexOf("?")>-1){data += "&keyword="+keyword;}
+        else{data += "?keyword="+keyword;}
+      }
+      if(indusId != null && indusId != ""){
+        if(data.indexOf("?")>-1){data += "&indusId="+indusId;}
+        else{data += "?indusId="+indusId;}
+      }
+      if(categoryId != null && categoryId != ""){
+        if(data.indexOf("?")>-1){data += "&categoryId="+categoryId;}
+        else{data += "?categoryId="+categoryId;}
+      }
+      if(minPrice != null && minPrice != ""){
+        if(data.indexOf("?")>-1){data += "&minPrice="+minPrice;}
+        else{data += "?minPrice="+minPrice;}
+      }
+      if(maxPrice != null && maxPrice != ""){
+        if(data.indexOf("?")>-1){data += "&maxPrice="+maxPrice;}
+        else{data += "?maxPrice="+maxPrice;}
+      }
+      if(minOrder != null && minOrder != ""){
+        if(data.indexOf("?")>-1){data += "&minOrder="+minOrder;}
+        else{data += "?minOrder="+minOrder;}
+      }
+      if(productType != null && productType != ""){
+        if(data.indexOf("?")>-1){data += "&productType="+productType;}
+        else{data += "?productType="+productType;}
+      }
+      var vip = "";
+      if($(".experience-Member").prop("checked")){
+        vip += "0,"
+      }
+      if($(".vip-Member").prop("checked")){
+        vip += "1,"
+      }
+      if($(".gold-Member").prop("checked")){
+        vip += "2,"
+      }
+      if($(".prime-Member").prop("checked")){
+        vip += "3,"
+      }
+      if(vip != ""){
+        vip = vip.substring(0,vip.length-1);
+        if(data.indexOf("?")>-1){data += "&vip="+vip;}
+        else{data += "?vip="+vip;}
+      }
+      return data;
+    }
+</script>
+
+</body>
+</html>

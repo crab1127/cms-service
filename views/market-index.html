@@ -1,0 +1,146 @@
+<!--专业市场-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= base.name %> - <%= config.title %></title>
+
+    <% include ./block/head.html %>
+  <link rel="stylesheet" href="<%= assetsPath %>/Professionalmarket/css/main.css">
+  </head>
+  <body>
+
+   <% include ./components/header.html %>
+   <% include ./block/market-nav.html %>
+
+  <div class="gm-container">
+    <div class="gm-area-a clearfix">
+      <div class="lemenu">
+        <% if (menus && menus.length) { %>
+        <% menus.forEach(function(menu, i){ %>
+          <div class="ti"><%- menu.name.substr(0,10) %></div>
+          <div class="ty">
+            <% if (menu.children && menu.children.length) {%>
+            <% menu.children.forEach(function(item) { %>
+            <a href="<%= item.link %>"><span><%- item.name.substr(0,10) %></span></a>
+            <% }) %>
+            <% } %>
+          </div>
+          <% if (i != (menus.length-1)) { %>
+          <div class="ln"></div>
+          <% } %>
+        <% }) %>
+        <% } %>
+      </div>
+      <!--幻灯片-->
+      <div class="a-main">
+        <div class="a-banner">
+          <% if (slides && slides.length) {%>
+          <div class="scrol-box">
+            <div class="scrol-box-list" id="scrol-box-list-id">
+              <% slides.forEach(function(item) {%>
+              <div class="scrol">
+                <a href="<%= item.link %>">
+                  <img src="<%- resize(item.img, 940, 350, 2) %>" width="940px" height="350px"/>
+                </a>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+          <div class="scrol-dot" id="scrol-dot-id">
+            <ul>
+              <% slides.forEach(function(item) {%>
+              <li class="menuItem inact"><a href="javascript:;"></a></li>
+              <% }) %>
+            </ul>
+          </div>
+
+          <% } %>
+        </div>
+
+        <!--推荐-->
+        <div class="a-tuj">
+          <% if (recommend && recommend.length) {%>
+            <% recommend.forEach(function(item, i) { %>
+            <% if (i == 0) { %>
+              <div class="AdvBox" style="background-image: url(<%- resize(item.img, 120, 120) %>); ">
+            <% } %>
+            <% if (i == 1) { %>
+              <div class="AdvBoxTw" style="background-image: url(<%- resize(item.img, 120, 120) %>); ">
+            <% } %>
+            <% if (i == 2) { %>
+              <div class="AdvBoxTh" style="background-image: url(<%- resize(item.img, 120, 120) %>); ">
+            <% } %>
+              <a href="<%= item.link %>">
+                <div class="bx">
+                  <span class="ti"><%- item.name.substr(0,10) %></span>
+                  <span class="de"><%- item.desc.substr(0,10) %></span>
+                  <span class="pr">
+            <% if(item.price != undefined ){ %>
+          ￥ <%= item.price.substr(0,10) %>
+          <% } %>
+        </span>
+                </div>
+              </a>
+            </div>
+            <% }) %>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <!--楼层-->
+    <% if (floorContent && floorContent.length) { %>
+      <% floorContent.forEach(function(floor, i){ %>
+      <div class="floor-box bordertop<%= (i + 1)%6 %>">
+        <a href="<%= floor.link %>" class="one">
+          <div class="bx"><img src="<%- resize(floor.img, 220, 340, 2) %>" width="220" height="340" /></div>
+        </a>
+        <% if (floor.banner && floor.banner.length) { %>
+        <a href="<% if( floor.banner[0].id){ %>/productDetail/detail/<%= floor.banner[0].id %>.cf  <%}else{%>  <%= floor.banner[0].link %> <%}%>" class="two">
+          <div class="bx"><img src="<%- resize(floor.banner[0].img, 736, 340,2) %>" width="736" height="340" /></div>
+        </a>
+        <% } %>
+
+        <% if (floor.product1 && floor.product1.length) { %>
+        <a href="<% if(floor.product1[0].id){ %>/productDetail/detail/<%= floor.product1[0].id %>.cf  <%}else{%>  <%= floor.product1[0].link %> <%}%>" class="fou">
+          <div class="bx"><img src="<%- resize(floor.product1[0].img, 243, 340,2) %>" width="243" height="340"/></div>
+        </a>
+        <% } %>
+
+        <% if (floor.product2 && floor.product2.length) { %>
+        <a href="<% if(floor.product2[0].id){ %>/productDetail/detail/<%= floor.product2[0].id %>.cf  <%}else{%>  <%= floor.product2[0].link %> <%}%>" class="fiv">
+          <div class="bx"><img src="<%- resize(floor.product2[0].img, 213, 244, 2) %>" width="213" height="244" /></div>
+        </a>
+        <% } %>
+
+        <% if (floor.product3 && floor.product3.length) { %>
+        <a href="<% if(floor.product3[0].id){ %>/productDetail/detail/<%= floor.product3[0].id %>.cf  <%}else{%>  <%= floor.product3[0].link %> <%}%>" class="six">
+          <div class="bx"><img src="<%- resize(floor.product3[0].img, 241, 244, 2) %>" width="241" height="244" /></div>
+        </a>
+        <% if (floor.product3.length > 1) {%>
+        <a href="<% if(floor.product3[1].id){ %>/productDetail/detail/<%= floor.product3[1].id %>.cf  <%}else{%>  <%= floor.product3[1].link %> <%}%>" class="six">
+          <div class="bx"><img src="<%- resize(floor.product3[1].img, 241, 244, 2) %>" width="241" height="244" /></div>
+        </a>
+        <% } %>
+        <% } %>
+
+        <% if (floor.product4 && floor.product4.length) { %>
+        <a href="<% if(floor.product4[0].id){ %>/productDetail/detail/<%= floor.product4[0].id %>.cf  <%}else{%>  <%= floor.product4[0].link %> <%}%>" class="sev">
+          <div class="bx"><img src="<%- resize(floor.product4[0].img, 241, 244, 2) %>" width="241" height="244" /></div>
+        </a>
+        <% if (floor.product4.length > 1) {%>
+        <a href="<% if(floor.product4[1].id){ %>/productDetail/detail/<%= floor.product4[1].id %>.cf  <%}else{%>  <%= floor.product4[1].link %> <%}%>" class="sev">
+          <div class="bx"><img src="<%- resize(floor.product4[1].img, 241, 244, 2) %>" width="241" height="244" /></div>
+        </a>
+        <% } %>
+        <% } %>
+
+      </div>
+      <% }) %>
+    <% } %>
+
+  </div>
+
+  <% include ./components/footer.html %>
+  <script type="text/javascript" src="<%= assetsPath %>/Professionalmarket/market.js"></script>
+  </body>
+</html>

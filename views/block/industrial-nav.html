@@ -1,0 +1,41 @@
+<div class="top-navi">
+  <div class="bx">
+    <ul>
+      <li>
+        <a href="/industrial/<%= base._id%>"
+          <% if ( '/industrial/' + base._id == path) {%>class="cu"<% } %>
+        >首  页</a>
+      </li>
+      <li>
+        <a href="/industrial/<%= base._id%>/onlineShop"
+          <% if (/onlineShop/.test(path)) {%> class="cu" <% } %>
+        >网上商城</a>
+      </li>
+      <li>
+        <a href="/industrial/<%= base._id%>/exhibitionTradeCenter"
+          <% if (/exhibitionTradeCenter/.test(path)) {%> class="cu" <% } %>
+        >展贸中心</a>
+      </li>
+      <li>
+        <a href="/industrial/<%= base._id%>/electricBusinessPark"
+          <% if (/electricBusinessPark/.test(path)) {%> class="cu" <% } %>
+        >电商园</a>
+      </li>
+      <li>
+        <a href="/industrial/<%= base._id%>/logistics"
+          <% if (/logistics/.test(path)) {%> class="cu" <% } %>
+        >物流中心</a>
+      </li>
+      <li>
+        <a href="/industrial/<%= base._id%>/introduce"
+          <% if (/introduce/.test(path)) {%> class="cu" <% } %>
+        >产业介绍</a>
+      </li>
+      <% if (base.cmsLink && base.cmsName) { %>
+      <li>
+        <a href="<%= base.cmsLink %>"><%= base.cmsName %></a>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</div>

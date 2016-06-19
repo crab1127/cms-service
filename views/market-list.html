@@ -1,0 +1,100 @@
+<!--专业市场-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>专业市场</title>
+
+  <% include ./block/head.html %>
+  <link href="<%= assetsPath %>/IndustrialCluster/css/home.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="<%= assetsPath %>/Professionalmarket/css/main.css">
+  <style type="text/css">
+    /*幻灯片*/
+    .main-slide{ width:1200px; height:410px; overflow:hidden; position:relative; border:1px solid #ddd;  }
+    .main-slide .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
+    .main-slide .hd ul{ overflow:hidden; zoom:1; float:left;  }
+    .main-slide .hd ul li{ float:left; margin-right:5px;  width:15px; height:15px; border-radius:20px;line-height:14px; text-align:center; background:#fff; cursor:pointer; opacity: .5; filter:alpha(opacity=50)}
+    .main-slide .hd ul li.on{ background:#fff; color:#fff;opacity: 1; filter:alpha(opacity=100) }
+    .main-slide .bd{ position:relative; height:100%; z-index:0;   }
+    .main-slide .bd li{ zoom:1; vertical-align:middle; }
+    .main-slide .bd img{ width:1200px; height:410px; display:block;  }
+
+    /* 下面是前/后按钮代码，如果不需要删除即可 */
+    .main-slide .prev,
+    .main-slide .next{ position:absolute; left:3%; top:50%; margin-top:-25px; display:block; width:32px; height:40px; background:url(../global/images/slider-arrow.png) -110px 5px no-repeat; filter:alpha(opacity=50);opacity:0.5;   }
+    .main-slide .next{ left:auto; right:3%; background-position:8px 5px; }
+    .main-slide .prev:hover,
+    .main-slide .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+    .main-slide .prevStop{ display:none;  }
+    .main-slide .nextStop{ display:none;  }
+  </style>
+
+</head>
+<body>
+
+
+<% include ./components/header.html %>
+<% include ./components/main-nav.html %>
+<div class="container">
+  <div class="gm-banner">
+    <% if(slides && slides.length) { %>
+    <div class="main-slide" id="main-slide">
+
+      <div class="hd">
+        <ul>
+          <% slides.forEach(function(item, i){ %>
+          <li></li>
+          <% }) %>
+        </ul>
+      </div>
+      <div class="bd">
+        <ul>
+          <% slides.forEach(function(item, i){ %>
+          <li>
+            <a href="<%= item.link %>" target="_blank">
+              <img src="<%- resize(item.img, 'origin') %>">
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+
+      <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+      <a class="prev" href="javascript:void(0)"></a>
+      <a class="next" href="javascript:void(0)"></a>
+
+    </div>
+    <% } %>
+  </div>
+  <% if (markets && markets.length) { %>
+  <% markets.forEach(function(market) { %>
+  <% if (market.items && market.items.length) { %>
+  <div class="gm-title">
+    <img src="<%- resize(market.img, 'origin') %>" alt="<%= market.name %>" width="1198" height="69"/>
+  </div>
+  <div class="row gm-conter">
+    <% market.items.forEach(function(item) { %>
+    <div class="col-md-3">
+      <a href="/market/<%= item._id %>" class="trumb-ac">
+        <img src="<%- resize(item.img, 261, 225) %>" width="261" height="225" />
+        <strong><%= item.name %></strong>
+        <p><%= item.title %></p>
+      </a>
+    </div>
+    <% }) %>
+  </div>
+  <% } %>
+  <% }) %>
+  <% } %>
+</div>
+
+
+
+<% include ./components/footer.html %>
+
+<script type="text/javascript" src="<%= assetsPath %>/Professionalmarket/market.js"></script>
+</body>
+</html>
+
